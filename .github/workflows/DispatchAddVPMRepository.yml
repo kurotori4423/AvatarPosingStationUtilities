@@ -3,20 +3,34 @@ on:
     release:
       types: [published]
     workflow_dispatch:
+      inputs:
+        tag_name:
+          description: 'Tag name for the package (e.g., v1.0.0)'
+          required: true
+          type: string
 
 jobs:
-  SendVpmRS64Net:
+  SendVPMRepository:
     runs-on: ubuntu-latest
     steps:
+      - name: Set variables
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG_NAME="${{ inputs.tag_name }}"
+          else
+            TAG_NAME="${{ github.event.release.tag_name }}"
+          fi
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+      
       - name: Debug payload information
         run: |
           echo "=== Debug Information ==="
           echo "Event name: ${{ github.event_name }}"
-          echo "Release tag name: ${{ github.event.release.tag_name }}"
-          echo "Release name: ${{ github.event.release.name }}"
+          echo "Tag name: ${{ steps.vars.outputs.tag_name }}"
           echo "Repository: AvatarPosingStationUtilities"
           echo "Target repository: kurotori4423/vpm.kurotori4423"
-          echo "Client payload: {\"repository\": \"AvatarPosingStationUtilities\", \"tag\": \"${{ github.event.release.tag_name }}\"}"
+          echo "Client payload: {\"repository\": \"AvatarPosingStationUtilities\", \"tag\": \"${{ steps.vars.outputs.tag_name }}\"}"
           echo "========================="
       
       - name: Repository Dispatch
@@ -25,4 +39,4 @@ jobs:
           token: ${{ secrets.VPM_REPO_TOKEN }}
           repository: kurotori4423/vpm.kurotori4423
           event-type: add_new_version
-          client-payload: '{"repository": "AvatarPosingStationUtilities", "tag": "${{ github.event.release.tag_name }}"}'
+          client-payload: '{"repository": "AvatarPosingStationUtilities", "tag": "${{ steps.vars.outputs.tag_name }}"}'
