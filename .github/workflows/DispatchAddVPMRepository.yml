@@ -11,6 +11,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.VPM_REPO_TOKEN }}
-          repository: your-username/VPM-Repository
+          repository: kurotori4423/vpm.kurotori4423
           event-type: add_new_version
           client-payload: '{"repository": "repositoryName", "tag": "${{ github.event.release.tag_name }}"}'
