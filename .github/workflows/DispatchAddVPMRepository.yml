@@ -2,6 +2,7 @@ name: Dispatch-Add-VPM-Repository
 on:
     release:
       types: [published]
+    workflow_dispatch:
 
 jobs:
   SendVpmRS64Net:
@@ -13,4 +14,4 @@ jobs:
           token: ${{ secrets.VPM_REPO_TOKEN }}
           repository: kurotori4423/vpm.kurotori4423
           event-type: add_new_version
-          client-payload: '{"repository": "repositoryName", "tag": "${{ github.event.release.tag_name }}"}'
+          client-payload: '{"repository": "AvatarPosingStationUtilities", "tag": "${{ github.event.release.tag_name }}"}'
