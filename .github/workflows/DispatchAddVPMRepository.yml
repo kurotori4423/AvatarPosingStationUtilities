@@ -8,6 +8,17 @@ jobs:
   SendVpmRS64Net:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug payload information
+        run: |
+          echo "=== Debug Information ==="
+          echo "Event name: ${{ github.event_name }}"
+          echo "Release tag name: ${{ github.event.release.tag_name }}"
+          echo "Release name: ${{ github.event.release.name }}"
+          echo "Repository: AvatarPosingStationUtilities"
+          echo "Target repository: kurotori4423/vpm.kurotori4423"
+          echo "Client payload: {\"repository\": \"AvatarPosingStationUtilities\", \"tag\": \"${{ github.event.release.tag_name }}\"}"
+          echo "========================="
+      
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
