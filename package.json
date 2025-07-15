@@ -1,0 +1,18 @@
+{
+  "name": "com.kurotori4423.avatar-posing-station-utilities",
+  "displayName": "Avatar Posing Station Utilities",
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "description": "Avatar posing gimmick for world",
+  "author": {
+    "name": "kurotori4423",
+    "email": "kurotori4423@gmail.com",
+    "url": "https://github.com/kurotori4423/AvatarPoseViewer"
+  },
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "2.0.0"
+  },
+  "vpmDependencies": {
+    "com.vrchat.worlds": ">=3.6.0"
+  }
+}

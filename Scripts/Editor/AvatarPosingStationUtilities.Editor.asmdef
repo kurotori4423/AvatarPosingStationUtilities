@@ -1,0 +1,24 @@
+{
+    "name": "AvatarPosingStationUtilities_Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:40d4154a19bf95144b3a8e3d50822576",
+        "GUID:99835874ee819da44948776e0df4ff1d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "VRC.Udon.Common.dll",
+        "VRCSDKBase.dll",
+        "VRCSDK3.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
